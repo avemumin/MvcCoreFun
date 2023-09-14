@@ -1,0 +1,27 @@
+﻿@model List<Person>
+@{
+    ViewData["Title"] = "Privacy Policy";
+    var currentYear = DateTime.Now.Year;
+    var dayOfWeek = DateTime.Now.DayOfWeek;
+   
+}
+
+
+
+<h1>@ViewData["Title"]</h1>
+
+@{
+    if (dayOfWeek.Equals(DayOfWeek.Monday))
+    {
+        ViewData["moje"] = "Tak";
+    }
+}
+<p>@ViewData["moje"]</p>
+<p>@currentYear </p>
+ nie wiem
+
+ nie wiem co to
+@foreach(var item in @Model)
+{
+    <p>@item.FirstName   @item.LastName </p>
+}

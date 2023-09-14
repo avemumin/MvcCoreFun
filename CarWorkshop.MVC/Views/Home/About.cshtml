@@ -1,0 +1,36 @@
+﻿@model List<Abouts>
+@{
+    ViewData["abouts"] = "Zadanie domowe wypisz";
+    
+}
+
+<p> @ViewData["abouts"]</p>
+
+@foreach (var item in @Model)
+{
+    <p class="alert alert-primary"> @item.Title</p>
+    <div class="alert alert-primary">@item.Description</div>
+
+    @foreach (var itemTag in item.Tags)
+    {
+        <p class="alert alert-secondary">@itemTag</p>
+        
+      
+    }
+}
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm-4 border ">
+            Column_1
+        </div>
+        <div class="col-sm-1 border">
+            Column_2
+        </div>
+        <div class="col-sm-1 border">
+            Column_3
+        </div>
+        <div class="col-sm-5 border">
+            Column_4
+        </div>
+    </div>
+</div>
