@@ -1,4 +1,5 @@
 using CarWorkshop.Infrastructure.Extensions;
+using CarWorkshop.Infrastructure.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+var scope=  app.Services.CreateScope();
+var seeder =  scope.ServiceProvider.GetRequiredService<CarWorkshopSeeder>();
+await seeder.Seed();
 app.UseAuthorization();
 
 app.MapControllerRoute(
