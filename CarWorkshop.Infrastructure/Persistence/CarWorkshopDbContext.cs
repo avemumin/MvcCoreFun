@@ -1,5 +1,4 @@
-﻿using CarWorkshop.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace CarWorkshop.Infrastructure.Persistence;
 
