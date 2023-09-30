@@ -2,6 +2,7 @@
 using CarWorkshop.Application.CarWorkshop;
 using CDE = CarWorkshop.Domain.Entities;
 using CarWorkshop.Domain.Interfaces;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace CarWorkshop.Application.Services;
 
@@ -20,5 +21,12 @@ public class CarWorkshopService : ICarWorkshopService
         var carWorkshop = _mapper.Map<CDE.CarWorkshop>(carWorkshopDto);
         carWorkshop.EncodeName();
         await _carWorkshopRepository.Create(carWorkshop);
+    }
+
+    public async Task<IEnumerable<CarWorkshopDto>> GetAll()
+    {
+        var result = await _carWorkshopRepository.GetAll();
+        var dtos = _mapper.Map<IEnumerable<CarWorkshopDto>>(result);
+        return dtos;
     }
 }

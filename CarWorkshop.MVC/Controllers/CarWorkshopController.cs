@@ -12,7 +12,11 @@ public class CarWorkshopController : Controller
     {
         _carWorkshopService = carWorkshopService;
     }
-
+    public async Task<IActionResult> Index()
+    {
+        var allWorkshops = await _carWorkshopService.GetAll();
+        return View(allWorkshops);
+    }
     public IActionResult Create()
     {
         return View();
@@ -21,11 +25,12 @@ public class CarWorkshopController : Controller
     [HttpPost]
     public async Task<IActionResult> Create(CarWorkshopDto carWorkshop)
     {
-        if(!ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
             return View(carWorkshop);
         }
         await _carWorkshopService.Create(carWorkshop);
-        return RedirectToAction(nameof(Create));
+        return RedirectToAction(nameof(Index));
     }
+
 }

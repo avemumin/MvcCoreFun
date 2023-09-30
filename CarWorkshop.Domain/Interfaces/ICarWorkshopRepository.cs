@@ -3,4 +3,6 @@
 public interface ICarWorkshopRepository
 {
     Task Create(Entities.CarWorkshop carWorkshop);
+    Task<Entities.CarWorkshop?> GetByName(string value);
+    Task<IEnumerable<Entities.CarWorkshop>> GetAll();
 }
