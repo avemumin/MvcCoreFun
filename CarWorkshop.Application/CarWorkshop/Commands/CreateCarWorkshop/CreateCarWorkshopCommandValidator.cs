@@ -1,13 +1,13 @@
-﻿using CarWorkshop.Domain.Interfaces;
+﻿using CarWorkshop.Application.CarWorkshop.Commands.CreateCarWorkshop;
+using CarWorkshop.Domain.Interfaces;
 using FluentValidation;
-
 namespace CarWorkshop.Application.CarWorkshop;
 
-public class CarWorhshopDtoValidator : AbstractValidator<CarWorkshopDto>
+public class CreateCarWorkshopCommandValidator : AbstractValidator<CreateCarWorkshopCommand>
 {
     private readonly ICarWorkshopRepository _carWorkshopRepository;
 
-    public CarWorhshopDtoValidator(ICarWorkshopRepository carWorkshopRepository)
+    public CreateCarWorkshopCommandValidator(ICarWorkshopRepository carWorkshopRepository)
     {
         RuleFor(v => v.Name)
             .MinimumLength(2).WithMessage("Name should have atleast 2 characters")
