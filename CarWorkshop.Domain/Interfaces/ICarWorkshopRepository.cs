@@ -6,6 +6,5 @@ public interface ICarWorkshopRepository
     Task<Entities.CarWorkshop?> GetByName(string value);
     Task<IEnumerable<Entities.CarWorkshop>> GetAll();
     Task<Entities.CarWorkshop> GetByEncodedName(string encededName);
-
     Task Commit();
 }
