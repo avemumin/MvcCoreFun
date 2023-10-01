@@ -34,4 +34,9 @@ public class CarWorkshopRepository : ICarWorkshopRepository
     {
         return await _dbContext.CarWorkshops.FirstAsync(c => c.EncodedName == encodedName);
     }
+
+    public async Task Commit()
+    {
+        await _dbContext.SaveChangesAsync();
+    }
 }
