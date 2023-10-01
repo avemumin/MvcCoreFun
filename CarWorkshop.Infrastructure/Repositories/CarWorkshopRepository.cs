@@ -29,4 +29,9 @@ public class CarWorkshopRepository : ICarWorkshopRepository
             .FirstOrDefaultAsync(c => c.Name.ToLower() == value.ToLower());
 
     }
+
+    public async Task<Domain.Entities.CarWorkshop> GetByEncodedName(string encodedName)
+    {
+        return await _dbContext.CarWorkshops.FirstAsync(c => c.EncodedName == encodedName);
+    }
 }
