@@ -24,10 +24,7 @@ public class CarWorkshopController : Controller
         var allWorkshops = await _mediator.Send(new GetAllCarWorkshopsQuery());
         return View(allWorkshops);
     }
-    public IActionResult Create()
-    {
-        return View();
-    }
+  
 
     [Route("CarWorkshop/{encodedName}/Details")]
     public async Task<IActionResult> Details(string encodedName)
@@ -46,6 +43,16 @@ public class CarWorkshopController : Controller
         return View(model);
     }
 
+    public IActionResult Create()
+    {
+        if (User.Identity == null || !User.Identity.IsAuthenticated)
+        {
+            return RedirectToAction("/Account/Login", new { area = "Identity" });
+        }
+
+        return View();
+    }
+
     [HttpPost]
     public async Task<IActionResult> Create(CreateCarWorkshopCommand command)
     {
@@ -59,7 +66,7 @@ public class CarWorkshopController : Controller
 
     [HttpPost]
     [Route("CarWorkshop/{encodedName}/Edit")]
-    public async Task<IActionResult> Edit(EditCarWorkshopCommand command,string encodedName)
+    public async Task<IActionResult> Edit(EditCarWorkshopCommand command, string encodedName)
     {
         if (!ModelState.IsValid)
         {
